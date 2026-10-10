@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atomic — Habit Tracker</title>
+  <meta name="description"
+    content="A single-page identity-based habit tracker inspired by James Clear's Atomic Habits. Visualize consistency with contribution grids.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- Page Header -->
+    <header class="app-header">
+      <h1 class="app-title">Atomic</h1>
+      <p class="app-tagline">Build identity-based habits. 1% better every day.</p>
+    </header>
+
+    <!-- Summary Bar -->
+    <section id="summary-bar" class="summary-bar" aria-label="Habits Summary">
+      <div class="summary-stat">
+        <span class="stat-label">Total Habits</span>
+        <span id="total-habits-count" class="stat-value">0</span>
+      </div>
+      <div class="summary-stat summary-stat-highlight">
+        <span class="stat-label">Longest Active Streak</span>
+        <span id="longest-active-streak" class="stat-value">0 days</span>
+      </div>
+    </section>
+
+    <!-- Add Habit Section -->
+    <section class="add-habit-section" aria-label="Add Habit">
+      <button id="toggle-form-btn" class="btn-toggle-form" type="button" aria-expanded="false"
+        aria-controls="habit-form-container">
+        <span class="btn-icon" aria-hidden="true">+</span> New Habit
+      </button>
+
+      <div id="habit-form-container" class="habit-form-container collapsed" aria-hidden="true">
+        <form id="add-habit-form" class="habit-form">
+          <div class="form-group">
+            <label for="habit-name">Habit Name <span class="required-indicator" aria-hidden="true">*</span></label>
+            <input type="text" id="habit-name" name="name" required placeholder="e.g. Read 10 pages" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="habit-identity">Identity Statement <span class="required-indicator"
+                aria-hidden="true">*</span></label>
+            <input type="text" id="habit-identity" name="identity" required
+              placeholder='e.g. "A reader" or "Someone who shows up"' autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="habit-category">Category <span class="required-indicator" aria-hidden="true">*</span></label>
+            <select id="habit-category" name="category" required>
+              <option value="Health">Health</option>
+              <option value="Learning">Learning</option>
+              <option value="Creativity">Creativity</option>
+              <option value="Mindfulness">Mindfulness</option>
+              <option value="Connection">Connection</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="habit-stack">Stack After (Optional)</label>
+            <select id="habit-stack" name="stackedAfter">
+              <option value="">None</option>
+            </select>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">Add Habit</button>
+            <button type="button" id="cancel-form-btn" class="btn-cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Habit Cards List -->
+    <main id="habits-list" class="habits-list" aria-label="Habit Cards">
+      <!-- Habit cards will be rendered here by JS -->
+    </main>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="empty-state hidden">
+      <p class="empty-title">No habits tracked yet</p>
+      <p class="empty-subtitle">Start by defining a new habit and the identity you want to reinforce.</p>
+    </div>
+  </div>
+
+  <!-- Stacking Prompt Dialog -->
+  <dialog id="stacking-dialog" class="stacking-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-content" id="dialog-content">
+      <!-- Dynamic prompt content injected here -->
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
